@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "exposure-rl"
+version = "0.1.0"
+description = "EXPOSURE: Shapley explanations of the observational, inherent and belief uncertainty of an RL agent."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Kiana Farhadyar" }]
+requires-python = ">=3.11"
+dependencies = [
+  "gymnasium>=1.0",
+  "numpy>=2.0",
+  "pettingzoo>=1.24",
+  "scipy>=1.11",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+viz = [
+    "matplotlib>=3.8",
+    "umap-learn>=0.5.12",
+]
+neural = [
+  "flax>=0.8",
+  "jax[cuda13]>=0.10.1 ; sys_platform == 'linux'",
+  "jax>=0.4",
+  "optax>=0.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/exposure_rl"]
+
+[tool.ruff]
+line-length = 120
